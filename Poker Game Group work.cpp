@@ -31,177 +31,141 @@ In this section you are expected to use at least two of your friends code from a
 
 */
 
+/**
+*  ██▓███   ▒█████   ██ ▄█▀▓█████  ██▀███       ▄████  ▄▄▄       ███▄ ▄███▓▓█████  ██▀███
+* ▓██░  ██▒▒██▒  ██▒ ██▄█▒ ▓█   ▀ ▓██ ▒ ██▒    ██▒ ▀█▒▒████▄    ▓██▒▀█▀ ██▒▓█   ▀ ▓██ ▒ ██▒
+* ▓██░ ██▓▒▒██░  ██▒▓███▄░ ▒███   ▓██ ░▄█ ▒   ▒██░▄▄▄░▒██  ▀█▄  ▓██    ▓██░▒███   ▓██ ░▄█ ▒
+* ▒██▄█▓▒ ▒▒██   ██░▓██ █▄ ▒▓█  ▄ ▒██▀▀█▄     ░▓█  ██▓░██▄▄▄▄██ ▒██    ▒██ ▒▓█  ▄ ▒██▀▀█▄
+* ▒██▒ ░  ░░ ████▓▒░▒██▒ █▄░▒████▒░██▓ ▒██▒   ░▒▓███▀▒ ▓█   ▓██▒▒██▒   ░██▒░▒████▒░██▓ ▒██▒
+* ▒▓▒░ ░  ░░ ▒░▒░▒░ ▒ ▒▒ ▓▒░░ ▒░ ░░ ▒▓ ░▒▓░    ░▒   ▒  ▒▒   ▓▒█░░ ▒░   ░  ░░░ ▒░ ░░ ▒▓ ░▒▓░
+* ░▒ ░       ░ ▒ ▒░ ░ ░▒ ▒░ ░ ░  ░  ░▒ ░ ▒░     ░   ░   ▒   ▒▒ ░░  ░      ░ ░ ░  ░  ░▒ ░ ▒░
+* ░░       ░ ░ ░ ▒  ░ ░░ ░    ░     ░░   ░    ░ ░   ░   ░   ▒   ░      ░      ░     ░░   ░
+*              ░ ░  ░  ░      ░  ░   ░              ░       ░  ░       ░      ░  ░   ░
+*
+* 
+                                                 .
+                                      .          .
+            .                .
+
+
+                                                    .                            .
+                                              .. .
+                                              ..
+     .                                                           .
+
+                                                          .
+
+                                                                                      .      .
+                                                                                      .
+                                                                               .
+                                          ...........
+                                  .  .,,:;;;i;iiiiii;ii;;:,........         ..
+                  ..                .,;itt111iii11i1fftft11iii1iiiiiii;,
+                                    .;tttttt111ii111t1i111111111tt1ttffti.
+             .                     .,iiii11ttt1ii1ii;;;;;ii1t11i1t11ffttf1,..      .
+                                .,:ift11ttttt1111t11iiii;;:;i1t1;;;i;1ffttt:.                      .
+                              .:1LCGCCCCCLLLfftfttttt111tiii11it1iii;111tttfi,.              ..
+                             .:1tC00GCCCLCCCCGCCCGCLft11f111111tti;i111iit1i11;,..
+                          .  ,;i;i1fC080GCLLfffCGGCCft1tffLfCLftt11ti;ii;it111t1i:,.
+                            .:::::;i1tLG0GLLfffLftCCCGCCLLLLGGftttfft11iii1iLCCfft::,
+               .            .,::,::;1ii1t1i1L00fi;11itLCGGGCLLtttttttt1iiiitLCLffLL;:.
+                           ..,,,,,,:;ii1i;;;:tt1t;i1tffLLLfLCCCCCffCLffftt1tttffttfi,.
+            .               ...,,,,,;11i;::::11fiii1tffLLLL11LCCCGG00GLLLLLtt1tLf11;.      .
+                         .    ....,;11i;:,:,i1tti1;,i1tLC0fifCti111fLCCLLLff111tf1;.
+                                 ,;1i;:,,,,,;tttff:,;;1tCt;0Li;tLfii1fLLLCCLLttt1:.
+                                ,:ii;,.....,,1i1tf,,:,,1titf;i08L1;;iLttfLCCGCf;..         .
+                               .:t1:.     ...i1;;1,,,,,i1t;,;tLfi;;;1t1tLCCC0LL:,.
+                .            .,:tt,        ..:t:;t;..,iLf1;iii;;ii;;i;it08@@0Lt,.
+                             ::11.           .1;,1i;;1CGCtii;::;i;:;;;it1iLCf;..
+                             ,i1.            .11.:i;if0GC1;,.,:;i::;:;;;:;iti,
+                    .      ,;i1;.       .....;L1iitfL0GC1;:::,:i;,,,,:::,;1t;.
+                    ..  ..;LL1i,     .,:;i111Lt1LLfLLffi;;::,,i:,...,,,,,:11:        .
+                   .;111tfCCt;.   .,:;ii;;iiittft1t1i1i;;;:,,;:.........,:;;,
+                   ,fLftt1;,.    ,iii;;;::;i11t:;f;,;i1L1:,,::..       ..,,,.
+                   ;t;..       ,;i;::::,..,:itt,t:.,,;;fti;;,.          ....
+                  .i:       .,;i;,..      :i1t:1: ,;itfLti:.     .
+                  ::.  .,:;;i11:.       .itti:i;.,itftft;,.
+                 ,;,. .;11t11;,.      .,1ff;:1;.,:;,.,;f:.
+                 .::..iLffi,.         .;LCf;1: ,,,,..,ft..
+                  ,::;LL1:            .;L0t::..,,::;;;i,     .
+                  .,:1t:.             .::i1,;;,,:;ii;,. .
+                 .,,;1,              . .,,;, . .:;;,.   .
+                ,;;i;;,   ...,.         ..::.   .:,                                              . .
+               .:;:,:::,. .::;:.           ..    ,,.
+             ..;;,  ,:i1,  ,:i;,                 ,:.                   .  .
+              .,.    .,i:  .,;;:.                ..                    .     .
+                        .   .;i,.                                            .
+                             .;.
+                  .                                                         .              .
+                                         .          .
+                                                                             .
+
+
+                                                                 .
+   ..
+                                        .
+                                                                                      .
+                              .                                 .
+
+                    .                                          .                 .
+                                                                                  .
+
+
+Text Colour:
+
+
+* 
+* 
+* 
+* 
+*  ██▓███  ▓█████  ██▀███   ██▀███ ▓██   ██▓    ▄▄▄▄    ██▀███   ██▓  ▄████  ██░ ██ ▄▄▄█████▓
+* ▓██░  ██▒▓█   ▀ ▓██ ▒ ██▒▓██ ▒ ██▒▒██  ██▒   ▓█████▄ ▓██ ▒ ██▒▓██▒ ██▒ ▀█▒▓██░ ██▒▓  ██▒ ▓▒
+* ▓██░ ██▓▒▒███   ▓██ ░▄█ ▒▓██ ░▄█ ▒ ▒██ ██░   ▒██▒ ▄██▓██ ░▄█ ▒▒██▒▒██░▄▄▄░▒██▀▀██░▒ ▓██░ ▒░
+* ▒██▄█▓▒ ▒▒▓█  ▄ ▒██▀▀█▄  ▒██▀▀█▄   ░ ▐██▓░   ▒██░█▀  ▒██▀▀█▄  ░██░░▓█  ██▓░▓█ ░██ ░ ▓██▓ ░
+* ▒██▒ ░  ░░▒████▒░██▓ ▒██▒░██▓ ▒██▒ ░ ██▒▓░   ░▓█  ▀█▓░██▓ ▒██▒░██░░▒▓███▀▒░▓█▒░██▓  ▒██▒ ░
+* ▒▓▒░ ░  ░░░ ▒░ ░░ ▒▓ ░▒▓░░ ▒▓ ░▒▓░  ██▒▒▒    ░▒▓███▀▒░ ▒▓ ░▒▓░░▓   ░▒   ▒  ▒ ░░▒░▒  ▒ ░░
+* ░▒ ░      ░ ░  ░  ░▒ ░ ▒░  ░▒ ░ ▒░▓██ ░▒░    ▒░▒   ░   ░▒ ░ ▒░ ▒ ░  ░   ░  ▒ ░▒░ ░    ░
+* ░░          ░     ░░   ░   ░░   ░ ▒ ▒ ░░      ░    ░   ░░   ░  ▒ ░░ ░   ░  ░  ░░ ░  ░
+*             ░  ░   ░        ░     ░ ░         ░         ░      ░        ░  ░  ░  ░
+*                                   ░ ░              ░
+*/
 // section A
 // include necesary libraries
-#include <iostream>
-#include <string>
-#include <vector>
+#include "Game.h"
 #include <map>
-#include <random>
-#include <algorithm>
-#include <iomanip>
-#include <limits>
-#include "Player.h"
-#include "PokerHand.h"
-#include <ctime>
-#include <cstdlib>
-#include <random>
-#include "Card.h"
-
-
-
-using namespace std;
-
-// ANSI color codes
-const string RESET = "\033[0m";
-const string GREEN = "\033[32m";
-const string RED = "\033[31m";
-const string CYAN = "\033[36m";
-const string YELLOW = "\033[33m";
-const string MAGENTA = "\033[35m";
-const string BOLD = "\033[1m";
-const string UNDERLINE = "\033[4m";
-const string REVERSED = "\033[7m";
-const string HIDDEN = "\033[8m";
-const string BLACK = "\033[30m";
-const string BLUE = "\033[34m";
-const string WHITE = "\033[37m";
-const string BG_BLACK = "\033[40m";
-const string BG_BLUE = "\033[44m";
-const string BG_WHITE = "\033[47m";
-const string BG_RESET = "\033[49m";
-const string BG_RED = "\033[41m";
-const string BG_GREEN = "\033[42m";
-const string BG_YELLOW = "\033[43m";
-const string BG_MAGENTA = "\033[45m";
-const string BG_CYAN = "\033[46m";
-const string BG_LIGHT_GRAY = "\033[47m";
-const string BG_DARK_GRAY = "\033[100m";
-const string BG_LIGHT_RED = "\033[101m";
-const string BG_LIGHT_GREEN = "\033[102m";
-const string BG_LIGHT_YELLOW = "\033[103m";
-const string BG_LIGHT_BLUE = "\033[104m";
-const string BG_LIGHT_MAGENTA = "\033[105m";
-const string BG_LIGHT_CYAN = "\033[106m";
-
-
-//class PokerHand;  // Forward declaration
-
-
-
-
-
-/*
-* 
-* 
-string randomCardNumber() {
-    const vector<string> numbers = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A" };
-    static random_device rd;
-    static mt19937 gen(rd());
-    uniform_int_distribution<> dis(0, numbers.size() - 1);
-    return numbers[dis(gen)];
-}
-
-string randomCardType() {
-    const vector<string> types = { "Hearts", "Diamonds", "Clubs", "Spades" };
-    static random_device rd;
-    static mt19937 gen(rd());
-    uniform_int_distribution<> dis(0, types.size() - 1);
-    return types[dis(gen)];
-}
-*/
-
-
-void displayInstructions() {
-    cout << "Welcome to Texas Hold'em Poker!\n";
-    cout << "The hand rankings from weakest to strongest are:\n";
-    cout << "1. One Pair\n2. Two Pairs\n3. Three of a Kind\n4. Straight\n";
-    cout << "5. Flush\n6. Full House\n7. Four of a Kind\n8. Straight Flush\n";
-    cout << "9. Royal Flush\n";
-}
+#include <iostream>
 
 int main() {
-    srand(static_cast<unsigned int>(time(nullptr)));
+    std::map<std::string, int> highScores;
+    int npcLevel = 1;
 
-    vector<Card> deck;
-    vector<string> numbers = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A" };
-    vector<string> types = { "Hearts", "Diamonds", "Clubs", "Spades" };
+    loadHighScores(highScores);
+    loadGameState(highScores, npcLevel);
 
-    for (const string& type : types) {
-        for (const string& number : numbers) {
-            deck.push_back(Card(number, type));
+    while (true) {
+        displayMenu();
+
+        int choice;
+        std::cin >> choice;
+
+        switch (choice) {
+        case 1:
+            displayHowToPlay();
+            break;
+        case 2:
+            playGame(highScores, npcLevel);
+            break;
+        case 3:
+            displayHighScores(highScores);
+            break;
+        case 4:
+            std::cout << "Saving game state and exiting..." << std::endl;
+            saveGameState(highScores, npcLevel);
+            return 0;
+        default:
+            std::cout << "Invalid choice. Please try again." << std::endl;
         }
-    }
-
-    random_shuffle(deck.begin(), deck.end());
-
-    Player player("Player 1");
-    Player computer("Computer");
-
-    for (int i = 0; i < 2; ++i) {
-        player.receiveCard(deck.back());
-        deck.pop_back();
-        computer.receiveCard(deck.back());
-        deck.pop_back();
-    }
-
-    cout << "Your cards:\n";
-    player.displayCards();
-
-    vector<Card> communityCards;
-    for (int i = 0; i < 5; ++i) {
-        communityCards.push_back(deck.back());
-        deck.pop_back();
-    }
-
-    cout << "Community cards:\n";
-    for (const Card& card : communityCards) {
-        card.display();
-    }
-    cout << endl;
-
-    for (const Card& card : communityCards) {
-        card.displayNumber();
-    }
-    cout << endl;
-
-    for (const Card& card : communityCards) {
-        card.displayType();
-    }
-    cout << endl;
-
-    for (const Card& card : communityCards) {
-        card.displayReverseNumber();
-    }
-    cout << endl;
-
-    for (const Card& card : communityCards) {
-        card.displayEnd();
-    }
-    cout << endl;
-
-    vector<Card> playerHand = player.getCards();
-    playerHand.insert(playerHand.end(), communityCards.begin(), communityCards.end());
-
-    vector<Card> computerHand = computer.getCards();
-    computerHand.insert(computerHand.end(), communityCards.begin(), communityCards.end());
-
-    int playerRank = PokerHand::getHandRank(playerHand);
-    int computerRank = PokerHand::getHandRank(computerHand);
-
-    cout << "Your best hand: " << PokerHand::rankToString(playerRank) << endl;
-    cout << "Computer's best hand: " << PokerHand::rankToString(computerRank) << endl;
-
-    if (playerRank > computerRank) {
-        cout << "\033[1;32mCongratulations! You win!\033[0m\n";
-    }
-    else if (playerRank < computerRank) {
-        cout << "\033[1;31mYou lose! Better luck next time.\033[0m\n";
-    }
-    else {
-        cout << "\033[1;33mIt's a tie!\033[0m\n";
     }
 
     return 0;
 }
-

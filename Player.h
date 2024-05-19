@@ -2,22 +2,26 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include "card.h"
+#include "Card.h"
 #include <vector>
 #include <string>
 
 class Player {
-private:
+protected:
     std::string name;
-    std::vector<Card> cards;
+    std::vector<Card> hand;
+    int score;
 
 public:
-    explicit Player(const std::string& playerName);
+    Player(const std::string& name);
 
-    void receiveCard(const Card& card);
-    void displayCards() const;
     std::string getName() const;
-    const std::vector<Card>& getCards() const;
+    std::vector<Card> getHand() const;
+    void addCard(const Card& card);
+    void showHand() const;
+    void clearHand();
+    int getScore() const;
+    void addScore(int points);
 };
 
 #endif // PLAYER_H

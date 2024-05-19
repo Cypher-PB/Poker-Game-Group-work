@@ -1,45 +1,30 @@
-﻿#include "card.h"
+﻿#include "Card.h"
 #include <iostream>
 #include <iomanip>
 
-using namespace std;
+Card::Card(Suit suit, Rank rank) : suit(suit), rank(rank) {}
 
-Card::Card(const string& num, const string& typ) : number(num), type(typ) {}
-
-string Card::getNumber() const {
-    return number;
+std::string Card::getCardString() const {
+    const char* suitStr[] = { "Hearts", "Diamonds", "Clubs", "Spades" };
+    const char* rankStr[] = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace" };
+    return std::string(rankStr[static_cast<int>(rank) - 2]) + " of " + suitStr[static_cast<int>(suit)];
 }
 
-string Card::getType() const {
-    return type;
+Suit Card::getSuit() const {
+    return suit;
+}
+
+Rank Card::getRank() const {
+    return rank;
 }
 
 void Card::display() const {
-    cout << "┌─────────┐ ";
-}
-
-void Card::displayNumber() const {
-    cout << "│" << setw(2) << left << number << "       │ ";
-}
-
-void Card::displayType() const {
-    cout << "│    ";
-    if (type == "Hearts" || type == "Diamonds")
-        cout << "\033[1;31m"; // Red color for Hearts and Diamonds
-    else
-        cout << "\033[1;30m"; // Black color for Clubs and Spades
-    cout << type[0] << "    \033[0m│ ";
-}
-
-void Card::displayReverseNumber() const {
-    cout << "│       ";
-    if (type == "Hearts" || type == "Diamonds")
-        cout << "\033[1;31m"; // Red color for Hearts and Diamonds
-    else
-        cout << "\033[1;30m"; // Black color for Clubs and Spades
-    cout << setw(2) << right << number << "│\033[0m ";
-}
-
-void Card::displayEnd() const {
-    cout << "└─────────┘ ";
+    std::cout << "\033[1;34m"  // ANSI color for blue
+        << "┌─────────┐" << std::endl;
+    std::cout << "│ " << std::setw(2) << getCardString() << "      │" << std::endl;
+    std::cout << "│         │" << std::endl;
+    std::cout << "│    " << "    │" << std::endl;
+    std::cout << "│         │" << std::endl;
+    std::cout << "│      " << std::setw(2) << getCardString() << " │" << std::endl;
+    std::cout << "└─────────┘" << "\033[0m" << std::endl; // Reset ANSI color
 }

@@ -1,46 +1,36 @@
-#include "player.h"
+#include "Player.h"
 #include <iostream>
 
-using namespace std;
+Player::Player(const std::string& name) : name(name), score(0) {}
 
-
-Player::Player(const string& playerName) : name(playerName) {}
-
-void Player::receiveCard(const Card& card) {
-    cards.push_back(card);
-}
-
-void Player::displayCards() const {
-    for (const Card& card : cards) {
-        card.display();
-    }
-    cout << endl;
-
-    for (const Card& card : cards) {
-        card.displayNumber();
-    }
-    cout << endl;
-
-    for (const Card& card : cards) {
-        card.displayType();
-    }
-    cout << endl;
-
-    for (const Card& card : cards) {
-        card.displayReverseNumber();
-    }
-    cout << endl;
-
-    for (const Card& card : cards) {
-        card.displayEnd();
-    }
-    cout << endl;
-}
-
-string Player::getName() const {
+std::string Player::getName() const {
     return name;
 }
 
-const vector<Card>& Player::getCards() const {
-    return cards;
+std::vector<Card> Player::getHand() const {
+    return hand;
+}
+
+void Player::addCard(const Card& card) {
+    hand.push_back(card);
+}
+
+void Player::showHand() const {
+    std::cout << "\033[1;33m" << name << "'s hand:\033[0m" << std::endl; // ANSI color for yellow
+    for (const auto& card : hand) {
+        card.display();
+    }
+    std::cout << std::endl;
+}
+
+void Player::clearHand() {
+    hand.clear();
+}
+
+int Player::getScore() const {
+    return score;
+}
+
+void Player::addScore(int points) {
+    score += points;
 }

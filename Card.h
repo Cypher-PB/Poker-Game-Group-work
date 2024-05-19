@@ -4,24 +4,20 @@
 
 #include <string>
 
-using namespace std;
+enum class Suit { Hearts, Diamonds, Clubs, Spades };
+enum class Rank { Two = 2, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King, Ace };
 
 class Card {
 private:
-    string number;
-    string type;
+    Suit suit;
+    Rank rank;
 
 public:
-    explicit Card(const string& num, const string& typ);
-
-    string getNumber() const;
-    string getType() const;
-
+    Card(Suit suit, Rank rank);
+    std::string getCardString() const;
+    Suit getSuit() const;
+    Rank getRank() const;
     void display() const;
-    void displayNumber() const;
-    void displayType() const;
-    void displayReverseNumber() const;
-    void displayEnd() const;
 };
 
 #endif // CARD_H
