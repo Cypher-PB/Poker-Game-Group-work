@@ -2,15 +2,13 @@
 #ifndef POKERHAND_H
 #define POKERHAND_H
 
-#include <vector>
 #include "player.h"
+#include <vector>
 
 class PokerHand {
 public:
-    static int getCardRank(const Card& card);
-    static int getHandRank(const Player& player);
-    static Player determineWinner(const std::vector<Player>& players, const Player& computer);
-    static Player determineHighCardWinner(const std::vector<Player>& players, const Player& computer);
+    static int getHandRank(const std::vector<Card>& hand);
+    static std::string rankToString(int rank);
 };
 
 #endif // POKERHAND_H

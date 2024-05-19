@@ -4,17 +4,24 @@
 
 #include <string>
 
+using namespace std;
+
 class Card {
 private:
-    std::string number;
-    std::string type;
+    string number;
+    string type;
 
 public:
-    explicit Card(const std::string& num, const std::string& typ);
+    explicit Card(const string& num, const string& typ);
 
-    [[nodiscard]] std::string getNumber() const;
-    [[nodiscard]] std::string getType() const;
+    string getNumber() const;
+    string getType() const;
+
     void display() const;
+    void displayNumber() const;
+    void displayType() const;
+    void displayReverseNumber() const;
+    void displayEnd() const;
 };
 
 #endif // CARD_H

@@ -42,8 +42,12 @@ In this section you are expected to use at least two of your friends code from a
 #include <iomanip>
 #include <limits>
 #include "Player.h"
-#include "Card.h"
 #include "PokerHand.h"
+#include <ctime>
+#include <cstdlib>
+#include <random>
+#include "Card.h"
+
 
 
 using namespace std;
@@ -53,14 +57,43 @@ const string RESET = "\033[0m";
 const string GREEN = "\033[32m";
 const string RED = "\033[31m";
 const string CYAN = "\033[36m";
+const string YELLOW = "\033[33m";
+const string MAGENTA = "\033[35m";
+const string BOLD = "\033[1m";
+const string UNDERLINE = "\033[4m";
+const string REVERSED = "\033[7m";
+const string HIDDEN = "\033[8m";
+const string BLACK = "\033[30m";
+const string BLUE = "\033[34m";
+const string WHITE = "\033[37m";
+const string BG_BLACK = "\033[40m";
+const string BG_BLUE = "\033[44m";
+const string BG_WHITE = "\033[47m";
+const string BG_RESET = "\033[49m";
+const string BG_RED = "\033[41m";
+const string BG_GREEN = "\033[42m";
+const string BG_YELLOW = "\033[43m";
+const string BG_MAGENTA = "\033[45m";
+const string BG_CYAN = "\033[46m";
+const string BG_LIGHT_GRAY = "\033[47m";
+const string BG_DARK_GRAY = "\033[100m";
+const string BG_LIGHT_RED = "\033[101m";
+const string BG_LIGHT_GREEN = "\033[102m";
+const string BG_LIGHT_YELLOW = "\033[103m";
+const string BG_LIGHT_BLUE = "\033[104m";
+const string BG_LIGHT_MAGENTA = "\033[105m";
+const string BG_LIGHT_CYAN = "\033[106m";
 
-class PokerHand;  // Forward declaration
+
+//class PokerHand;  // Forward declaration
 
 
 
 
 
-
+/*
+* 
+* 
 string randomCardNumber() {
     const vector<string> numbers = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A" };
     static random_device rd;
@@ -76,121 +109,99 @@ string randomCardType() {
     uniform_int_distribution<> dis(0, types.size() - 1);
     return types[dis(gen)];
 }
+*/
 
-void howToPlay() {
-    cout << CYAN << "How to Play:" << RESET << endl;
-    cout << "1. Choose the level of difficulty for the computer opponent." << endl;
-    cout << "2. Each player, including the computer, will receive 3 cards." << endl;
-    cout << "3. The player with the highest total card rank wins." << endl;
-    cout << "4. In the High Card game, the player with the single highest card wins." << endl;
-    cout << "5. Have fun and enjoy the game!" << endl;
-    cout << "Press Enter to go back to the main menu." << endl;
-    cin.ignore();
-    cin.get();
-}
 
-int validateInput(int lower, int upper) {
-    int choice;
-    while (true) {
-        cin >> choice;
-        if (cin.fail() || choice < lower || choice > upper) {
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "Invalid input. Please enter a number between " << lower << " and " << upper << ": ";
-        }
-        else {
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            break;
-        }
-    }
-    return choice;
-}
-
-void congratulations() {
-    cout << GREEN << "Congratulations! You won!" << RESET << endl;
-    cout << "Press Enter to return to the main menu." << endl;
-    cin.get();
-}
-
-void gameOver() {
-    cout << RED << "Game Over! You lost!" << RESET << endl;
-    cout << "Press Enter to play again or return to the main menu." << endl;
-    cin.get();
-}
-
-void playGame(int difficulty) {
-    int playerCount;
-    cout << "Enter number of players (1-4): ";
-    playerCount = validateInput(1, 4);
-
-    vector<Player> players;
-    for (int i = 1; i <= playerCount; ++i) {
-        players.emplace_back("Player " + to_string(i));
-    }
-
-    Player computer("Computer");
-
-    for (int i = 0; i < 3; ++i) {
-        for (auto& player : players) {
-            player.receiveCard(Card(randomCardNumber(), randomCardType()));
-        }
-        computer.receiveCard(Card(randomCardNumber(), randomCardType()));
-    }
-
-    for (const auto& player : players) {
-        player.displayCards();
-    }
-
-    // Determine the winner based on difficulty
-    Player winner("Winner");
-    if (difficulty == 1) { // Easy
-        winner = PokerHand::determineHighCardWinner(players, computer);
-    }
-    else if (difficulty == 2) { // Medium
-        winner = PokerHand::determineWinner(players, computer);
-    }
-    else { // Hard
-        winner = PokerHand::determineWinner(players, computer);
-    }
-
-    if (winner.getName() == "Computer") {
-        gameOver();
-    }
-    else {
-        congratulations();
-    }
-}
-
-void showMenu() {
-    while (true) {
-        cout << CYAN << "Welcome to the Console Casino!" << RESET << endl;
-        cout << "1. Play Game" << endl;
-        cout << "2. How to Play" << endl;
-        cout << "3. Exit" << endl;
-        cout << "Enter your choice: ";
-
-        int choice = validateInput(1, 3);
-
-        if (choice == 1) {
-            cout << "Select difficulty level: " << endl;
-            cout << "1. Easy" << endl;
-            cout << "2. Medium" << endl;
-            cout << "3. Hard" << endl;
-            cout << "Enter your choice: ";
-            int difficulty = validateInput(1, 3);
-            playGame(difficulty);
-        }
-        else if (choice == 2) {
-            howToPlay();
-        }
-        else if (choice == 3) {
-            cout << "Thank you for playing! Goodbye!" << endl;
-            break;
-        }
-    }
+void displayInstructions() {
+    cout << "Welcome to Texas Hold'em Poker!\n";
+    cout << "The hand rankings from weakest to strongest are:\n";
+    cout << "1. One Pair\n2. Two Pairs\n3. Three of a Kind\n4. Straight\n";
+    cout << "5. Flush\n6. Full House\n7. Four of a Kind\n8. Straight Flush\n";
+    cout << "9. Royal Flush\n";
 }
 
 int main() {
-    showMenu();
+    srand(static_cast<unsigned int>(time(nullptr)));
+
+    vector<Card> deck;
+    vector<string> numbers = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A" };
+    vector<string> types = { "Hearts", "Diamonds", "Clubs", "Spades" };
+
+    for (const string& type : types) {
+        for (const string& number : numbers) {
+            deck.push_back(Card(number, type));
+        }
+    }
+
+    random_shuffle(deck.begin(), deck.end());
+
+    Player player("Player 1");
+    Player computer("Computer");
+
+    for (int i = 0; i < 2; ++i) {
+        player.receiveCard(deck.back());
+        deck.pop_back();
+        computer.receiveCard(deck.back());
+        deck.pop_back();
+    }
+
+    cout << "Your cards:\n";
+    player.displayCards();
+
+    vector<Card> communityCards;
+    for (int i = 0; i < 5; ++i) {
+        communityCards.push_back(deck.back());
+        deck.pop_back();
+    }
+
+    cout << "Community cards:\n";
+    for (const Card& card : communityCards) {
+        card.display();
+    }
+    cout << endl;
+
+    for (const Card& card : communityCards) {
+        card.displayNumber();
+    }
+    cout << endl;
+
+    for (const Card& card : communityCards) {
+        card.displayType();
+    }
+    cout << endl;
+
+    for (const Card& card : communityCards) {
+        card.displayReverseNumber();
+    }
+    cout << endl;
+
+    for (const Card& card : communityCards) {
+        card.displayEnd();
+    }
+    cout << endl;
+
+    vector<Card> playerHand = player.getCards();
+    playerHand.insert(playerHand.end(), communityCards.begin(), communityCards.end());
+
+    vector<Card> computerHand = computer.getCards();
+    computerHand.insert(computerHand.end(), communityCards.begin(), communityCards.end());
+
+    int playerRank = PokerHand::getHandRank(playerHand);
+    int computerRank = PokerHand::getHandRank(computerHand);
+
+    cout << "Your best hand: " << PokerHand::rankToString(playerRank) << endl;
+    cout << "Computer's best hand: " << PokerHand::rankToString(computerRank) << endl;
+
+    if (playerRank > computerRank) {
+        cout << "\033[1;32mCongratulations! You win!\033[0m\n";
+    }
+    else if (playerRank < computerRank) {
+        cout << "\033[1;31mYou lose! Better luck next time.\033[0m\n";
+    }
+    else {
+        cout << "\033[1;33mIt's a tie!\033[0m\n";
+    }
+
     return 0;
 }
+

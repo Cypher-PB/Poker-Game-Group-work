@@ -1,49 +1,43 @@
 #include "pokerhand.h"
+#include <algorithm>
 #include <map>
 
-int PokerHand::getCardRank(const Card& card) {
-    std::map<std::string, int> rankMap = {
-        {"2", 2}, {"3", 3}, {"4", 4}, {"5", 5}, {"6", 6},
-        {"7", 7}, {"8", 8}, {"9", 9}, {"10", 10},
-        {"J", 11}, {"Q", 12}, {"K", 13}, {"A", 14}
+using namespace std;
+
+int PokerHand::getHandRank(const vector<Card>& hand) {
+    // Simplified logic to determine hand rank
+    map<string, int> valueMap = {
+        {"2", 2}, {"3", 3}, {"4", 4}, {"5", 5}, {"6", 6}, {"7", 7}, {"8", 8}, {"9", 9},
+        {"10", 10}, {"J", 11}, {"Q", 12}, {"K", 13}, {"A", 14}
     };
-    return rankMap[card.getNumber()];
-}
 
-int PokerHand::getHandRank(const Player& player) {
-    int totalRank = 0;
-    for (const auto& card : player.getCards()) {
-        totalRank += PokerHand::getCardRank(card);
-    }
-    return totalRank;
-}
+    map<string, int> suitMap = {
+        {"Hearts", 1}, {"Diamonds", 2}, {"Clubs", 3}, {"Spades", 4}
+    };
 
-Player PokerHand::determineWinner(const std::vector<Player>& players, const Player& computer) {
-    Player winner = computer;
-    int highestRank = PokerHand::getHandRank(computer);
-
-    for (const auto& player : players) {
-        int playerRank = PokerHand::getHandRank(player);
-        if (playerRank > highestRank) {
-            winner = player;
-            highestRank = playerRank;
-        }
+    vector<int> values;
+    for (const Card& card : hand) {
+        values.push_back(valueMap[card.getNumber()]);
     }
 
-    return winner;
+    sort(values.begin(), values.end());
+
+    // Add more detailed hand ranking logic here...
+
+    return values.back(); // Simplified ranking just for the highest card
 }
 
-Player PokerHand::determineHighCardWinner(const std::vector<Player>& players, const Player& computer) {
-    Player winner = computer;
-    Card highestCard = computer.getHighestCard();
-
-    for (const auto& player : players) {
-        Card playerHighestCard = player.getHighestCard();
-        if (PokerHand::getCardRank(playerHighestCard) > PokerHand::getCardRank(highestCard)) {
-            winner = player;
-            highestCard = playerHighestCard;
-        }
+string PokerHand::rankToString(int rank) {
+    switch (rank) {
+    case 1: return "One Pair";
+    case 2: return "Two Pairs";
+    case 3: return "Three of a Kind";
+    case 4: return "Straight";
+    case 5: return "Flush";
+    case 6: return "Full House";
+    case 7: return "Four of a Kind";
+    case 8: return "Straight Flush";
+    case 9: return "Royal Flush";
+    default: return "High Card";
     }
-
-    return winner;
 }

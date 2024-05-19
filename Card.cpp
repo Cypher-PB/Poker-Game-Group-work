@@ -2,24 +2,44 @@
 #include <iostream>
 #include <iomanip>
 
-Card::Card(const std::string& num, const std::string& typ) : number(num), type(typ) {}
+using namespace std;
 
-std::string Card::getNumber() const {
+Card::Card(const string& num, const string& typ) : number(num), type(typ) {}
+
+string Card::getNumber() const {
     return number;
 }
 
-std::string Card::getType() const {
+string Card::getType() const {
     return type;
 }
 
 void Card::display() const {
-    std::cout << "┌─────────┐\n";
-    std::cout << "│" << std::setw(2) << std::left << number << "       │\n";
-    std::cout << "│         │\n";
-    std::cout << "│         │\n";
-    std::cout << "│    " << type[0] << "    │\n";
-    std::cout << "│         │\n";
-    std::cout << "│         │\n";
-    std::cout << "│       " << std::setw(2) << std::right << number << "│\n";
-    std::cout << "└─────────┘\n";
+    cout << "┌─────────┐ ";
+}
+
+void Card::displayNumber() const {
+    cout << "│" << setw(2) << left << number << "       │ ";
+}
+
+void Card::displayType() const {
+    cout << "│    ";
+    if (type == "Hearts" || type == "Diamonds")
+        cout << "\033[1;31m"; // Red color for Hearts and Diamonds
+    else
+        cout << "\033[1;30m"; // Black color for Clubs and Spades
+    cout << type[0] << "    \033[0m│ ";
+}
+
+void Card::displayReverseNumber() const {
+    cout << "│       ";
+    if (type == "Hearts" || type == "Diamonds")
+        cout << "\033[1;31m"; // Red color for Hearts and Diamonds
+    else
+        cout << "\033[1;30m"; // Black color for Clubs and Spades
+    cout << setw(2) << right << number << "│\033[0m ";
+}
+
+void Card::displayEnd() const {
+    cout << "└─────────┘ ";
 }

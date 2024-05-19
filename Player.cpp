@@ -1,32 +1,46 @@
 #include "player.h"
-#include <algorithm>
 #include <iostream>
 
 using namespace std;
 
+
 Player::Player(const string& playerName) : name(playerName) {}
 
 void Player::receiveCard(const Card& card) {
-    cards.emplace_back(card);
+    cards.push_back(card);
 }
 
 void Player::displayCards() const {
-    cout << name << "'s cards:\n";
-    for (const auto& card : cards) {
+    for (const Card& card : cards) {
         card.display();
     }
+    cout << endl;
+
+    for (const Card& card : cards) {
+        card.displayNumber();
+    }
+    cout << endl;
+
+    for (const Card& card : cards) {
+        card.displayType();
+    }
+    cout << endl;
+
+    for (const Card& card : cards) {
+        card.displayReverseNumber();
+    }
+    cout << endl;
+
+    for (const Card& card : cards) {
+        card.displayEnd();
+    }
+    cout << endl;
 }
 
 string Player::getName() const {
     return name;
 }
 
-vector<Card> Player::getCards() const {
+const vector<Card>& Player::getCards() const {
     return cards;
-}
-
-Card Player::getHighestCard() const {
-    return *std::max_element(cards.begin(), cards.end(), [](const Card& a, const Card& b) {
-        return a.getNumber() < b.getNumber();
-        });
 }
